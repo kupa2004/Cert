@@ -20,7 +20,7 @@
 - name: Create directory for dockerfile
   file:
     path: /home/docker
-  state: directory
+    state: directory
 
 - name: Copy war in directory for dockerfile
   copy:
