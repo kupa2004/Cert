@@ -31,7 +31,7 @@
     path: /home/docker
     state: directory
     mode: '0777'
-    become: yes
+  become: yes
 
 
 - name: Clone dockerfile
