@@ -8,7 +8,7 @@
 - name: Install python docker sdk
   shell: |
     pip3 install docker
-    become: yes
+  become: yes
 
 - name: Install docker
   apt:
