@@ -14,8 +14,8 @@ provider "aws" {
 resource "aws_instance" "builder" {
   ami = "ami-092cce4a19b438926"
   instance_type = "t3.micro"
-  key_name = "my-key01"
-  vpc_security_group_ids = ["sg-082fd21f7c55e274a"]
+  key_name = var.keyname
+  vpc_security_group_ids = [var.sgroup]
   tags = {
     Name = var.name1
     group = "builder"
@@ -25,8 +25,8 @@ resource "aws_instance" "builder" {
 resource "aws_instance" "stage" {
   ami = "ami-092cce4a19b438926"
   instance_type = "t3.micro"
-  key_name = "my-key01"
-  vpc_security_group_ids = ["sg-082fd21f7c55e274a"]
+  key_name = var.keyname
+  vpc_security_group_ids = [var.sgroup]
   tags = {
     Name = var.name2
     group = "stage"
