@@ -40,9 +40,11 @@
     dest: /home/docker
 
 - name: Copy war in directory for dockerfile
-  copy:
-    src: /home/docker/Dockerfile
-    dest: /home/boxfuse-sample-java-war-hello/target/
+  #copy:
+   # src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+   # dest: /home/docker/hello-1.0.war
+  #remote_src: yes
+  command: cp /home/boxfuse-sample-java-war-hello/target/hello-1.0.war /home/docker
 
 - name: Log into DockerHub
   docker_login:
