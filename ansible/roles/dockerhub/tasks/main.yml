@@ -26,22 +26,22 @@
     name: ubuntu
     group: docker
 
-#- name: Create directory for dockerfile
-#  file:
-#    path: /home/docker
-#    state: directory
-#    mode: '0777'
-#  become: yes
-
-#- name: Copy war in directory for dockerfile
-#  copy:
-#    src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
-#    dest: /home/docker/
+- name: Create directory for dockerfile
+  file:
+    path: /home/docker
+    state: directory
+    mode: '0777'
+    become: yes
 
 
 - name: Clone dockerfile
   git:
     repo: 'https://github.com/kupa2004/Dockerfile.git'
+    dest: /home/docker
+
+- name: Copy war in directory for dockerfile
+  copy:
+    src: /home/docker/Dockerfile
     dest: /home/boxfuse-sample-java-war-hello/target/
 
 - name: Log into DockerHub
