@@ -9,7 +9,7 @@
     - name: Update system
       apt: update_cache=yes
 
-    - name: Install modules
+    - name: Install modules1
       apt:
         name: openjdk-11-jre
         state: present
