@@ -40,7 +40,7 @@
 - name: Create container
   docker_container:
     name: hello10
-    image: kupa2004/hello:v2
+    image: kupa2004/hello:v1
     published_ports:
       - "8080:8080"
     state: started

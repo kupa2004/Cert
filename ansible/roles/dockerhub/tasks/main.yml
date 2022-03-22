@@ -57,6 +57,6 @@
       path: /home/docker
     name: hello10
     repository: kupa2004/hello
-    tag: v2
+    tag: v1
     push: yes
     source: build
