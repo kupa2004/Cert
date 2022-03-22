@@ -36,7 +36,8 @@
 - name: Copy war in directory for dockerfile
   copy:
     src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
-    dest: /home/docker
+    dest: /home/docker/
+
 
 - name: Clone dockerfile
   git:

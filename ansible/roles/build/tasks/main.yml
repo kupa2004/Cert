@@ -11,6 +11,7 @@
   file:
     path: /home/boxfuse-sample-java-war-hello
     state: directory
+    mode: '0777'
 
 - name: Clone boxfuse
   git:
