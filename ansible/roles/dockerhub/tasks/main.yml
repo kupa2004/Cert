@@ -26,23 +26,23 @@
     name: ubuntu
     group: docker
 
-- name: Create directory for dockerfile
-  file:
-    path: /home/docker
-    state: directory
-    mode: '0777'
-  become: yes
+#- name: Create directory for dockerfile
+#  file:
+#    path: /home/docker
+#    state: directory
+#    mode: '0777'
+#  become: yes
 
-- name: Copy war in directory for dockerfile
-  copy:
-    src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
-    dest: /home/docker/
+#- name: Copy war in directory for dockerfile
+#  copy:
+#    src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+#    dest: /home/docker/
 
 
 - name: Clone dockerfile
   git:
     repo: 'https://github.com/kupa2004/Dockerfile.git'
-    dest: /home/docker/
+    dest: /home/boxfuse-sample-java-war-hello/target/
 
 - name: Log into DockerHub
   docker_login:
@@ -52,7 +52,7 @@
 - name: Build an image and push it to a private repo
   docker_image:
     build:
-      path: /home/docker
+      path: /home/boxfuse-sample-java-war-hello/target/
     name: hello10
     repository: kupa2004/hello
     tag: v1
