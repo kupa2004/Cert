@@ -13,7 +13,7 @@
 - name: Install docker
   apt:
     name: docker.io
-    state: started
+    state: present
   become: yes
 
 - name: Add group
