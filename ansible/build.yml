@@ -1,0 +1,100 @@
+---
+- name: package boxfuse
+  hosts: tag_group_builder
+  remote_user: ubuntu
+  become_user: root
+  become: true
+
+  tasks:
+    - name: Update system
+      apt: update_cache=yes
+
+    - name: Install modules
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Create directory
+      file:
+        path: /home/boxfuse-sample-java-war-hello
+        state: directory
+
+    - name: Clone boxfuse
+      git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /home/boxfuse-sample-java-war-hello/
+
+    - name: install maven
+      become: yes
+      apt:
+        pkg: maven
+        state: latest
+        update_cache: yes
+        cache_valid_time: 3600
+      with_items:
+        - maven
+
+    - name: Build boxfuse
+      command: 'mvn package'
+      args:
+        chdir: /home/boxfuse-sample-java-war-hello/
+
+    - name: Copy war in jenkins workspace
+      copy:
+        src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+        dest: /var/lib/jenkins/workspace/Cert/hello-1.0.war
+        
+- name: Run application
+  hosts: tag_group_stage
+  remote_user: ubuntu
+  become_user: root
+  become: true
+  
+  tasks:
+    - name: Install pip3
+      apt:
+        update_cache: yes
+        name: python3-pip
+      become: yes
+    
+    - name: Install python docker sdk
+      shell: |
+        pip3 install docker
+     become: yes
+    
+    - name: Install docker
+      apt:
+        name: docker.io
+      become: yes
+    
+    - name: Start Docker
+      shell: |
+        systemctl start docker
+        systemctl enable docker
+      become: yes
+  
+
+    - name: Install modules docker
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - docker
+
+    - name: Add group
+      group:
+        name: docker
+        state: present
+
+    - name: Add user to group
+      user:
+        name: ubuntu
+        group: docker
+    - name: Create container
+      docker_container:
+        name: hello
+        image: tomcat:alpine
+        published_ports:
+          - "8080:8080"
+        volumes:
+          - /var/lib/jenkins/workspace/Cert/:/usr/local/tomcat/webapps
+        state: started
