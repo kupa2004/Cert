@@ -1,5 +1,5 @@
 ---
-- name: package boxfuse
+- name: Package boxfuse in docker images
   hosts: tag_group_builder
   remote_user: ubuntu
   become_user: root
@@ -8,7 +8,7 @@
     - build
     - dockerhub
 
-- name: Run application
+- name: Run application boxfuse from docker images
   hosts: tag_group_stage
   remote_user: ubuntu
   become_user: root
