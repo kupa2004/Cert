@@ -6,8 +6,8 @@
   become: yes
 
 - name: Install python docker sdk
-  shell: |
-    pip3 install docker
+  pip:
+    name: docker
   become: yes
 
 - name: Install docker
@@ -16,11 +16,22 @@
     state: started
   become: yes
 
+- name: Add group
+  group:
+    name: docker
+    state: present
+
+- name: Add user to group
+  user:
+    name: ubuntu
+    group: docker
 
 - name: Create directory for dockerfile
   file:
     path: /home/docker
     state: directory
+    mode: '0777'
+  become: yes
 
 - name: Copy war in directory for dockerfile
   copy:
