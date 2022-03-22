@@ -17,7 +17,7 @@ resource "aws_instance" "builder" {
   key_name = "my-key-test"
   vpc_security_group_ids = ["sg-0bc242d0a1be0d8f2"]
   tags = {
-    Name = var.name
+    Name = var.name1
     group = "builder"
   }
 }
@@ -28,7 +28,7 @@ resource "aws_instance" "stage" {
   key_name = "my-key-test"
   vpc_security_group_ids = ["sg-0bc242d0a1be0d8f2"]
   tags = {
-    Name = var.name
+    Name = var.name2
     group = "stage"
   }
 }
