@@ -1,0 +1,33 @@
+---
+- name: Update system
+  apt: update_cache=yes
+
+- name: Install modules1
+  apt:
+    name: openjdk-11-jre
+    state: present
+
+- name: Create directory
+  file:
+    path: /home/boxfuse-sample-java-war-hello
+    state: directory
+
+- name: Clone boxfuse
+  git:
+    repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+    dest: /home/boxfuse-sample-java-war-hello/
+
+- name: install maven
+  become: yes
+  apt:
+    pkg: maven
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - maven
+
+- name: Build boxfuse
+  command: 'mvn package'
+  args:
+    chdir: /home/boxfuse-sample-java-war-hello/

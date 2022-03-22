@@ -1,0 +1,48 @@
+---
+- name: Install pip3
+  apt:
+    update_cache: yes
+    name: python3-pip
+  become: yes
+
+- name: Install python docker sdk
+  shell: |
+    pip3 install docker
+    become: yes
+
+- name: Install docker
+  apt:
+    name: docker.io
+    state: started
+  become: yes
+
+
+- name: Create directory for dockerfile
+  file:
+    path: /home/docker
+  state: directory
+
+- name: Copy war in directory for dockerfile
+  copy:
+    src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+    dest: /home/docker
+
+- name: Clone dockerfile
+  git:
+    repo: 'https://github.com/kupa2004/Dockerfile.git'
+    dest: /home/docker/
+
+- name: Log into DockerHub
+  docker_login:
+     username: "{{ mail }}"
+     password: "{{ pass }}"
+
+- name: Build an image and push it to a private repo
+  docker_image:
+    build:
+      path: /home/docker
+    name: hello10
+    repository: kupa2004/hello
+    tag: v1
+    push: yes
+    source: build
