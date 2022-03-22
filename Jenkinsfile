@@ -11,8 +11,7 @@ pipeline {
     stage('Instances by terraform') {
       steps {
         sh 'terraform -chdir=terraform/ init'
-        sh 'terraform -chdir=terraform/ apply -var "name1=builder08" -var "name2=stage08" --auto-approve'
-      }
+        sh 'terraform -chdir=terraform/ apply -var "name1=builder018" -var "name2=stage018" -var "keyname=my-key" -var "sgroup=sg-082fd21f7c55e274a" --auto-approve'     }
     }
 
     stage('Ansible') {
