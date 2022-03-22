@@ -48,8 +48,6 @@
 
 - name: Log into DockerHub
   docker_login:
-     docker_host: https://hub.docker.com/
-     registry_url: https://hub.docker.com/repository/docker/kupa2004/hello
      username: "{{ mail }}"
      password: "{{ pass }}"
 
