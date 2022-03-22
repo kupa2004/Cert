@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7cb558f-0d78-401f-9277-3733aeb18ee8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ansible/roles/dockerhub/tasks/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ansible/roles/dockerhub/tasks/main.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ansible/roles/stage/defaults/main.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ansible/roles/stage/tasks/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ansible/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ansible/build.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,14 +52,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="TF_FMT" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ansible/roles/stage" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nekrasova\Cert\ansible\roles\stage" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nekrasova\Cert\ansible\roles" />
       <recent name="C:\Users\nekrasova\Cert\ansible\roles\build\tasks" />
     </key>
   </component>
@@ -217,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647972673532</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="1">
+      <created>1647973278562</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1647973278562</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -248,11 +261,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1647954277696" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1647972674577">
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1647973281417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1647962531451" />
     <state x="2371" y="167" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1647954374958" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1647972674577" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1647973281417" />
   </component>
 </project>

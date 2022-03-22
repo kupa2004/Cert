@@ -13,52 +13,5 @@
   remote_user: ubuntu
   become_user: root
   become: true
-  
-  tasks:
-    - name: Install pip3
-      apt:
-        update_cache: yes
-        name: python3-pip
-      become: yes
-    
-    - name: Install python docker sdk
-      shell: |
-        pip3 install docker
-      become: yes
-    
-    - name: Install docker
-      apt:
-        name: docker.io
-      become: yes
-    
-    - name: Start Docker
-      shell: |
-        systemctl start docker
-        systemctl enable docker
-      become: yes
-  
-
-    - name: Install modules docker
-      pip:
-        name: "{{ item }}"
-      with_items:
-        - docker
-
-    - name: Add group
-      group:
-        name: docker
-        state: present
-
-    - name: Add user to group
-      user:
-        name: ubuntu
-        group: docker
-    - name: Create container
-      docker_container:
-        name: hello
-        image: tomcat:alpine
-        published_ports:
-          - "8080:8080"
-        volumes:
-          - /var/lib/jenkins/workspace/Cert/:/usr/local/tomcat/webapps
-        state: started
+  roles:
+    - stage
